@@ -87,7 +87,7 @@ form .btn-wrapper .btn {
   font-weight: 700;
   text-transform: uppercase;
   padding: 14px;
-  width: 30%;
+  width: 80%;
   border: none;
   cursor: pointer;
 }
@@ -109,5 +109,9 @@ form .btn-wrapper .btn-secondary {
   form .checkbox-wrapper {
     justify-content: space-between;
     flex-direction: row;
+  }
+
+  form .btn-wrapper .btn {
+    width: 30%;
   }
 }
