@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { GetUnitsService } from '../../services/get-units.service';
+import { LocationData } from '../types/UnitTypes';
 
 @Component({
   selector: 'app-forms',
@@ -14,7 +15,8 @@ import { GetUnitsService } from '../../services/get-units.service';
   styleUrl: './forms.component.css',
 })
 export class FormsComponent implements OnInit {
-  results = [];
+  results: LocationData[] = [];
+  fileteredResults: LocationData[] = [];
   form!: FormGroup;
 
   constructor(
@@ -25,16 +27,22 @@ export class FormsComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       hour: '',
-      showClosed: false,
+      showClosed: true,
+    });
+
+    this.unitService.getAllUnits().subscribe((data) => {
+      this.results = data.locations;
     });
   }
 
   onSubmit() {
-    console.log(this.form.value);
-
-    this.unitService.getAllUnits().subscribe((data) => {
-      console.log(data);
-    });
+    if (!this.form.value.showClosed) {
+      this.fileteredResults = this.results.filter(
+        (location) => location.opened === true
+      );
+    } else {
+      this.fileteredResults = this.results;
+    }
   }
 
   onClean() {
