@@ -1,9 +1,9 @@
 export interface UnitsResponse {
   current_country_id: number;
-  locations: LocationData[];
+  locations: Location[];
 }
 
-export interface LocationData {
+export interface Location {
   id: number;
   title: string;
   content: string;

@@ -4,24 +4,26 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { GetUnitsService } from '../../services/get-units.service';
-import { LocationData } from '../types/UnitTypes';
+import { Location } from '../types/UnitTypes';
+import { FilterUnitsService } from '../../services/filter-units.service';
 
 @Component({
   selector: 'app-forms',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, HttpClientModule],
-  providers: [GetUnitsService],
+  providers: [GetUnitsService, FilterUnitsService],
   templateUrl: './forms.component.html',
   styleUrl: './forms.component.css',
 })
 export class FormsComponent implements OnInit {
-  results: LocationData[] = [];
-  fileteredResults: LocationData[] = [];
+  results: Location[] = [];
+  filteredResults: Location[] = [];
   form!: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
-    private unitService: GetUnitsService
+    private getUnit: GetUnitsService,
+    private filterUnits: FilterUnitsService
   ) {}
 
   ngOnInit(): void {
@@ -30,19 +32,20 @@ export class FormsComponent implements OnInit {
       showClosed: true,
     });
 
-    this.unitService.getAllUnits().subscribe((data) => {
-      this.results = data.locations;
+    this.getUnit.getAllUnits().subscribe((data) => {
+      this.results = data;
+      this.filteredResults = data;
     });
   }
 
   onSubmit() {
-    if (!this.form.value.showClosed) {
-      this.fileteredResults = this.results.filter(
-        (location) => location.opened === true
-      );
-    } else {
-      this.fileteredResults = this.results;
-    }
+    let { showClosed, hour } = this.form.value;
+    this.filteredResults = this.filterUnits.filter(
+      this.results,
+      showClosed,
+      hour
+    );
+    this.getUnit.setFilteredUnits(this.filteredResults);
   }
 
   onClean() {
