@@ -1,33 +1,49 @@
-<form action="">
-  <div class="form-icon">
-    <img src="/assets/images/icon-hour.png" alt="" />Horário
-  </div>
+<form [formGroup]="form">
+  <div class="form-icon"><img src="/assets/images/icon-hour.png" />Horário</div>
   <h5>Qual período quer treinar?</h5>
   <div class="radio-wrapper">
     <div>
-      <input type="radio" name="morning" />
-      <label for="morning">Manhã</label>
+      <input
+        type="radio"
+        name="hour"
+        formControlName="hour"
+        id="morning"
+        value="manha"
+      />
+      <label for="manha">Manhã</label>
     </div>
     <span>06:00 às 12:00</span>
   </div>
   <div class="radio-wrapper">
     <div>
-      <input type="radio" name="afternoon" />
-      <label for="afternoon">Tarde</label>
+      <input
+        type="radio"
+        name="hour"
+        formControlName="hour"
+        id="afternoon"
+        value="tarde"
+      />
+      <label for="tarde">Tarde</label>
     </div>
     <span>12:01 às 18:00</span>
   </div>
   <div class="radio-wrapper">
     <div>
-      <input type="radio" name="night" />
-      <label for="night">Noite</label>
+      <input
+        type="radio"
+        name="hour"
+        formControlName="hour"
+        id="night"
+        value="noite"
+      />
+      <label for="noite">Noite</label>
     </div>
     <span>18:01 às 23:00</span>
   </div>
   <div class="checkbox-wrapper">
     <div>
-      <input type="checkbox" name="show-closed" />
-      <label for="show-closed">Exibir unidades fechadas</label>
+      <input type="checkbox" name="showClosed" formControlName="showClosed" />
+      <label for="showClosed">Exibir unidades fechadas</label>
     </div>
     <div>
       Resultados encotrados:
@@ -36,7 +52,9 @@
   </div>
 
   <div class="btn-wrapper">
-    <button class="btn btn-primary">Encontrar unidade</button>
-    <button class="btn btn-secondary">Limpar</button>
+    <button class="btn btn-primary" (click)="onSubmit()">
+      Encontrar unidade
+    </button>
+    <button class="btn btn-secondary" (click)="onClean()">Limpar</button>
   </div>
 </form>

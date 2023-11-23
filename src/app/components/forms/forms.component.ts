@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-forms',
@@ -9,6 +9,24 @@ import { ReactiveFormsModule } from '@angular/forms';
   templateUrl: './forms.component.html',
   styleUrl: './forms.component.css',
 })
-export class FormsComponent {
+export class FormsComponent implements OnInit {
   results = [];
+  form!: FormGroup;
+
+  constructor(private formBuilder: FormBuilder) {}
+
+  ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      hour: '',
+      showClosed: false,
+    });
+  }
+
+  onSubmit() {
+    console.log(this.form.value);
+  }
+
+  onClean() {
+    this.form.reset();
+  }
 }
