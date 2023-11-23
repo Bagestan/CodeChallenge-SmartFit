@@ -1,0 +1,99 @@
+form {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+
+  border: 3px solid var(--light-text);
+  border-radius: 0.5rem;
+
+  padding: 24px;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+form .form-icon {
+  font-size: 14px;
+  color: var(--light-grey);
+
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+form .form-icon img {
+  height: 30px;
+}
+
+form h5 {
+  font-size: 24px;
+  color: var(--medium-text);
+  font-weight: 300;
+  margin: 24px 0 24px 12px;
+}
+
+form .radio-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 0.5rem;
+  border-top: 1px solid var(--light-text);
+}
+
+form .radio-wrapper:nth-last-child(3) {
+  border-bottom: 1px solid var(--light-text);
+}
+
+form .radio-wrapper span {
+  color: var(--light-grey);
+}
+
+form .radio-wrapper label {
+  color: var(--light-grey);
+  margin-left: 8px;
+}
+
+form .radio-wrapper input {
+  color: tomato;
+}
+
+form .checkbox-wrapper {
+  margin-top: 32px;
+  color: var(--dark-grey);
+  border: 1px solid tomato;
+  width: 100%;
+  display: flex;
+
+  justify-content: space-between;
+}
+
+form .btn-wrapper {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+form .btn-wrapper .btn {
+  font-size: 18px;
+  border-radius: 5px;
+  color: var(--dark-grey);
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 14px;
+  width: 30%;
+  border: none;
+  cursor: pointer;
+}
+
+form .btn-wrapper .btn-primary {
+  background-color: var(--yellow);
+}
+form .btn-wrapper .btn-secondary {
+  background-color: transparent;
+  border: 1px solid #cccccc;
+}
