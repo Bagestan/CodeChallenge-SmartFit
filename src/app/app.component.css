@@ -5,3 +5,8 @@
   flex-direction: column;
   gap: 32px;
 }
+
+app-legend {
+  width: 80%;
+  margin: 0 auto;
+}
