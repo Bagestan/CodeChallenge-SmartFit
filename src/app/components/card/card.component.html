@@ -1,0 +1,29 @@
+<div class="card">
+  <span [ngClass]="unit.opened ? 'opened' : ''">
+    {{ unit.opened ? "Aberto" : "Fechado" }}
+  </span>
+  <h3>{{ unit.title }}</h3>
+  <p [innerHTML]="unit.content"></p>
+  <div class="divider"></div>
+  <ul>
+    @if (unit.mask) {
+    <img [src]="'/assets/images/icons/' + unit.mask + '-mask.png'" />
+    } @if (unit.towel) {
+    <img [src]="'/assets/images/icons/' + unit.towel + '-towel.png'" />
+    } @if (unit.fountain) {
+    <img [src]="'/assets/images/icons/' + unit.fountain + '-fountain.png'" />
+    } @if (unit.locker_room) {
+    <img
+      [src]="'/assets/images/icons/' + unit.locker_room + '-lockerroom.png'"
+    />
+    }
+  </ul>
+  <ul>
+    @for(schedule of unit.schedules; track schedule){
+    <li>
+      <b>{{ schedule.weekdays }}</b>
+      {{ schedule.hour }}
+    </li>
+    }
+  </ul>
+</div>

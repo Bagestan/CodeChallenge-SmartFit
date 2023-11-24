@@ -3,14 +3,34 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { FormsComponent } from './components/forms/forms.component';
+import { BehaviorSubject } from 'rxjs';
+import { CardsListComponent } from './components/cards-list/cards-list.component';
+import { Location } from './components/types/UnitTypes';
+import { GetUnitsService } from './services/get-units.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, HeaderComponent, FormsComponent],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    HeaderComponent,
+    FormsComponent,
+    CardsListComponent,
+  ],
+  providers: [GetUnitsService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'desafio-SmartFit';
+  showList = new BehaviorSubject(false);
+  unitsList: Location[] = [];
+
+  constructor(private unitsService: GetUnitsService) {}
+
+  onSubmit() {
+    console.log('chegou no app.module');
+    this.unitsList = this.unitsService.getFilteredUnits();
+    this.showList.next(true);
+  }
 }

@@ -1,0 +1,21 @@
+.cardList {
+  gap: 1rem;
+  margin: 0 auto;
+  max-width: 90%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+app-card {
+  margin: 0 auto;
+
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .cardList {
+    max-width: 80%;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
