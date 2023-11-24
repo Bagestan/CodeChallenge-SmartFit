@@ -8,6 +8,7 @@ import { CardsListComponent } from './components/cards-list/cards-list.component
 import { Location } from './components/types/UnitTypes';
 import { GetUnitsService } from './services/get-units.service';
 import { LegendComponent } from './components/legend/legend.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +20,7 @@ import { LegendComponent } from './components/legend/legend.component';
     FormsComponent,
     CardsListComponent,
     LegendComponent,
+    FooterComponent,
   ],
   providers: [GetUnitsService],
   templateUrl: './app.component.html',

@@ -4,6 +4,7 @@
   max-width: 90%;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  max-width: 1750px;
 }
 
 app-card {
